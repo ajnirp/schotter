@@ -10,7 +10,15 @@ go build
 
 ### Run
 
+See options:
 ```
+./schotter --help
+```
+
+Example runs:
+```
+./schotter --color
+./schotter --color --padding 50
 ./schotter
 ```
 

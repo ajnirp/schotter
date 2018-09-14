@@ -16,11 +16,6 @@ const (
 	numRows float64 = 28
 	numCols float64 = 15
 
-	padding float64 = 50
-
-	sideLength = float64(canvasWidth-2*padding) / numCols
-
-	maxJitter    = 0.9 * sideLength
 	maxRotation  = 360
 	minLineWidth = 1.0
 	maxLineWidth = 3.5
@@ -37,7 +32,12 @@ func main() {
 	context.Clear()
 
 	color := flag.Bool("color", false, "color the squares orange")
+	padding := flag.Float64("padding", 0, "padding for top and left (px)")
+
 	flag.Parse()
+
+	sideLength := float64(canvasWidth-2 * *padding) / numCols
+	maxJitter := 0.9 * sideLength
 
 	for row := float64(0); row < numRows; row++ {
 		// this parameter induces change in all aspects: line width, color, jitter, angle
@@ -51,10 +51,10 @@ func main() {
 			context.SetRGBA255(229, 122, 50, alpha) // orange
 		}
 
-		y := padding + row*sideLength
+		y := *padding + row*sideLength
 
 		for col := float64(0); col < numCols; col++ {
-			x := padding + col*sideLength
+			x := *padding + col*sideLength
 
 			context.Push()
 
@@ -64,7 +64,7 @@ func main() {
 
 			context.RotateAbout(angle, x+sideLength/2, y+sideLength/2)
 			context.Translate(jitterX, jitterY)
-			context.DrawRectangle(x, y, 0.9*sideLength, 0.9*sideLength) // top-left corner
+			context.DrawRectangle(x, y, sideLength, sideLength) // top-left corner
 
 			context.Pop()
 		}
