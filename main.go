@@ -36,7 +36,7 @@ func main() {
 
 	flag.Parse()
 
-	sideLength := float64(canvasWidth-2 * *padding) / numCols
+	sideLength := float64(canvasWidth-2**padding) / numCols
 	maxJitter := 0.9 * sideLength
 
 	for row := float64(0); row < numRows; row++ {
