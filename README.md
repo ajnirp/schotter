@@ -4,15 +4,21 @@ An implementation of Georg Nees' [Schotter](http://www.medienkunstnetz.de/works/
 
 ### Compile
 
+```
 go build
+```
 
 ### Run
 
+```
 ./schotter
+```
 
 ### Output
 
-./out.png
+```
+./out.png`
+```
 
 ### Example outputs
 
